@@ -1,2 +1,3 @@
 # Trabalho-CLP
- Trabalhi de faculdade de conceito de linguagem de programação. |Implementacao de fibonacci em 3 linguagens com medida de tempo de execução|
+ Considerações iniciais:
+ 1- Indexação começa do 1, isso significa que se procurado o primeiro elemento da sequencia de fibonacci (1) o retonro esperado é "0"
