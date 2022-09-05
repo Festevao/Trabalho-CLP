@@ -1,13 +1,13 @@
 function fibonacci (index=10) {
   if (!index) index = 10
   let sequence = [0, 1]
-  for (let i = 2; i < index; i++) {
+  for (let i = 2; i <= index; i++) {
     let n = sequence.length - 1 //last index of sequence
     let n_1 = n - 1 //index before the last of sequence
     sequence.push(sequence[n] + sequence[n_1])
   }
   //console.log(sequence)
-  console.log(`O ${index}º termo da sequencia é: ${sequence[index - 1]}`)
+  console.log(`O ${index}º termo da sequencia é: ${sequence[index]}`)
 }
 
 function getExecutionTime(method) { //calc a function execution time
