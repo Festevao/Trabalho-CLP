@@ -12,6 +12,7 @@ const _quantidade = Symbol('quantidade_ItemVenda')
 class ItemVenda extends Totalizavel {
   constructor(produto, quantidade) {
     if (!(Number(quantidade) === quantidade && quantidade % 1 === 0) || !(produto instanceof Produto)) throw new TypeError('Invalid parameter type')
+    super()
     this[_produto] = produto
     this[_quantidade] = quantidade
   }

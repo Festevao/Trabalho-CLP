@@ -9,18 +9,17 @@ const _itens = Symbol('itens_Venda')
 
 class Venda extends Totalizavel {
   constructor(numero, data, cliente) {
-    let isAllItemVenda = true
     for (let i = 3; i < arguments.length; i++) { // checa se todos os argumentos restantes sao do tipo ItemVenda
       if (!(arguments[i] instanceof ItemVenda)) {
-        isAllItemVenda = false
+        throw new TypeError('Invalid parameter type on itemVenda Array')
       }
     }
-    if (!(Number(numero) === numero && numero % 1 === 0) || !(data instanceof Date) || !(cliente instanceof Cliente) || !(arguments[3]) || !isAllItemVenda) throw new TypeError('Invalid parameter type')
+    if (!(Number(numero) && Number(numero) % 1 === 0) || !(data instanceof Date) || !(cliente instanceof Cliente)) throw new TypeError('Invalid parameter type')
+    super()
     this[_numero] = numero
     this[_data] = data
     this[_cliente] = cliente
-    arguments.splice(0, 3)
-    this[_itens] = arguments
+    this[_itens] = []
   }
 
   get numero() {

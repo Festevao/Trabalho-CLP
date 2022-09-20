@@ -27,6 +27,22 @@ body {
 }
 
 button {
-  margin: 10px;
+  margin: 5px;
 }
 
+input {
+  margin: 5px;
+  max-width: 30%;
+}
+
+span {
+  margin: 20px;
+}
+
+select {
+  margin: 5px;
+}
+
+h3 {
+  margin-top: -10px;
+}
