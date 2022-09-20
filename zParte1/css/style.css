@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+  outline: 0;
+}
+
+body {
+  margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	font-family: 'Jost', sans-serif;
+	background: linear-gradient(to bottom, #04f5a1, #16a875, #14916c);
+}
+
+.container {
+  display: flex;
+	justify-content: center;
+  flex-direction: column;
+  text-align: center; 
+  max-width: 80%;
+  margin: 50px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+button {
+  margin: 10px;
+}
+

@@ -9,6 +9,7 @@ import (
 
 var N int
 
+//n int, [string...] | fibonacci | n-ésimo termo
 func fibonacci(n int) int {
 	f := make([]int, n+1, n+2)
 	if n < 2 {

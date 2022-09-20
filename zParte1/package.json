@@ -1,0 +1,12 @@
+{
+  "name": "trabalho_pratico_p1",
+  "version": "1.0.0",
+  "description": "Trabalho de CLP",
+  "main": "index.js",
+  "scripts": {
+    "instal": "npm i -g live-server",
+    "start": "live-server"
+  },
+  "author": ["Felipi Trindade", "Macus Vinicius", "Pedro Laizo"],
+  "license": "ISC"
+}
