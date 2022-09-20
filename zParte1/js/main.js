@@ -34,11 +34,6 @@ function clearContainer() {
   }
 }
 
-function loadItemSaleMenu() {
-  clearContainer()
-  const containerSelector = document.querySelector('.container')
-}
-
 function addSale() {
 
 }
@@ -73,7 +68,7 @@ function alterOrDeleteProduct(event) {
     const productAtribute = auxArray[0]
     const productIndex = Number(auxArray[1])
     if (productAtribute === "delet") {
-      if(confirm(`Voce está prestes a exluir o produto ${arrayProdutos[productIndex].nome}`)){
+      if(confirm(`Voce esta prestes a exluir o produto ${arrayProdutos[productIndex].nome}`)){
         arrayProdutos.splice(productIndex, 1)
       } else {
         return
@@ -81,13 +76,13 @@ function alterOrDeleteProduct(event) {
     } else {
       const newPropertyValue = prompt(`Qual sera o novo valor de ${productAtribute} ?`)
       if (newPropertyValue === null) {
-        alert("Campo não preenchido")
+        alert("Campo nao preenchido")
         return
       } else if (productAtribute === "codigo" && (!Number(newPropertyValue) || Number(newPropertyValue) % 1 !== 0)) {
         alert("Codigo deve ser um numero inteiro")
         return
       } else if (productAtribute === "valor" && !Number(newPropertyValue)) {
-        alert("O formato de valor deve ser um número")
+        alert("O formato de valor deve ser um numero")
         return
       }
       (arrayProdutos[productIndex])[productAtribute] = newPropertyValue
@@ -101,11 +96,11 @@ function addProduct() {
   const productName = prompt("Insira o nome do Produto")
   const productValue = prompt("Insira o valor do Produto", "X.YZ")
   if (productCode === null || productName === null || productValue === null) {
-    alert("Algum campo não foi preenchido")
+    alert("Algum campo nao foi preenchido")
     return
   }
   if ((!(Number(productCode)) && Number(productCode) % 1 !== 0) || !(Number(productValue))) {
-    alert("O formato de alguma das informações esta errado")
+    alert("O formato de alguma das informacoes esta errado")
     return
   }
   arrayProdutos.push(new Produto(Number(productCode), productName, Number(productValue)))
@@ -171,7 +166,7 @@ function alterOrDeleteClient(event) {
     const clientAtribute = auxArray[0]
     const clientIndex = Number(auxArray[1])
     if (clientAtribute === "delet") {
-      if(confirm(`Voce está prestes a exluir o cliente ${arrayClientes[clientIndex].nome}`)){
+      if(confirm(`Voce esta prestes a exluir o cliente ${arrayClientes[clientIndex].nome}`)){
         arrayClientes.splice(clientIndex, 1)
       } else {
         return
@@ -179,7 +174,7 @@ function alterOrDeleteClient(event) {
     } else {
       const newPropertyValue = prompt(`Qual sera o novo valor de ${clientAtribute} ?`)
       if (newPropertyValue === null) {
-        alert("Campo não preenchido")
+        alert("Campo nao preenchido")
         return
       } else if (clientAtribute !== "dataNascimento") {
         (arrayClientes[clientIndex])[clientAtribute] = newPropertyValue
@@ -198,11 +193,11 @@ function alterOrDeleteClient(event) {
 
 function addClient() {
   const clientName = prompt("Insira o nome do cliente")
-  const clientAdress = prompt("Insira o endereço do cliente")
+  const clientAdress = prompt("Insira o endereco do cliente")
   const clientRg = prompt("Insira o RG do cliente")
   const clientBDate = prompt("Insira a data de nascimento do cliente", "MM/DD/AAAA")
   if (clientName === null || clientAdress === null || clientRg === null || clientBDate === null) {
-    alert("Algum campo não foi preenchido")
+    alert("Algum campo nao foi preenchido")
     return
   }
   const arrayAux = clientBDate.split("/")
@@ -283,6 +278,9 @@ function loadMainMenu() {
   const salesButton = document.createElement('button')
   salesButton.innerHTML = 'Vendas'
 
+  const menuLabel = document.createElement('h1')
+  menuLabel.innerHTML = 'OPCOES'
+  containerSelector.appendChild(menuLabel)
   containerSelector.appendChild(clientsButton)
   containerSelector.appendChild(productsButton)
   containerSelector.appendChild(salesButton)
