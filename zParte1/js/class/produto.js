@@ -27,8 +27,8 @@ class Produto {
   }
 
   set codigo(value) {
-    if(!(Number(codigo) === codigo && codigo % 1 === 0)) return
-    this[_codigo] = value
+    if(!(Number(value) && Number(value) % 1 === 0)) return
+    this[_codigo] = Number(value)
   }
 
   set nome(value) {
@@ -37,7 +37,7 @@ class Produto {
   }
 
   set valor(value) {
-    if(Number(value)) return
+    if(!Number(value)) return
     this[_valor] = parseFloat(value)
   }
 }
