@@ -26,7 +26,7 @@ A interface foi feita com 1 arquivo html que contem a base para todos os element
 | Apagar produto em vendas (ItemVEnda)                    | ✅      |
   
 ## Como executar o programa:
-# Instalar o NPM (que geralmente ja é instalado qunado se instala o nodeJs).
+### Instalar o NPM (que geralmente ja é instalado qunado se instala o nodeJs).
 `https://nodejs.org/en/`
 ### Abrir o terminal na pasta do projeto (aonde se localiza o arquivo package.json).
 ```bash
