@@ -7,12 +7,12 @@ A interface foi feita com 1 arquivo html que contem a base para todos os element
 
 * É indicado que seja utilizado o navegador google chrome para execução desse programa.
 ## Classes implementadas:
-* <a href="">Pessoa</a> (abstrata)
-* <a href="">Cliente</a> (extends Pessoa)
-* <a href="">Produto</a>
-* <a href="">Totalizavel</a> (abstrata)
-* <a href="">Venda</a> (Extends Totalizavel)
-* <a href="">ItemVenda</a> (Extends Totalizavel)
+* <a href="https://github.com/Festevao/Trabalho-CLP/blob/main/Parte-1/js/class/pessoa.js">Pessoa</a> (abstrata)
+* <a href="https://github.com/Festevao/Trabalho-CLP/blob/main/Parte-1/js/class/cliente.js">Cliente</a> (extends Pessoa)
+* <a href="https://github.com/Festevao/Trabalho-CLP/blob/main/Parte-1/js/class/produto.js">Produto</a>
+* <a href="https://github.com/Festevao/Trabalho-CLP/blob/main/Parte-1/js/class/totalizavel.js">Totalizavel</a> (abstrata)
+* <a href="https://github.com/Festevao/Trabalho-CLP/blob/main/Parte-1/js/class/venda.js">Venda</a> (Extends Totalizavel)
+* <a href="https://github.com/Festevao/Trabalho-CLP/blob/main/Parte-1/js/class/itemVenda.js">ItemVenda</a> (Extends Totalizavel)
 ## Funcionalidade por classe:
 
 | Funcionalidades para clientes        | Status |
@@ -43,7 +43,7 @@ A interface foi feita com 1 arquivo html que contem a base para todos os element
   
 ## Como executar o programa:
 ### Instalar o NPM (que geralmente ja é instalado qunado se instala o nodeJs).
-`https://nodejs.org/en/`
+Mais informações em https://nodejs.org/en/.
 ### Abrir o terminal na pasta do projeto (aonde se localiza o arquivo package.json).
 ```bash
 #linux & windows
