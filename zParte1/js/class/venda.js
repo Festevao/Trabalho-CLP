@@ -44,13 +44,13 @@ class Venda extends Totalizavel {
         throw new TypeError('Invalid parameter type')
       }
     }
-    this[_itens] = this[_itens].concat(arguments)
+    this[_itens] = this[_itens].concat([...arguments])
   }
 
   total() {
     let sum = 0
     for(let i = 0; i < this[_itens].length; i++) {
-      sum += this[_itens].total()
+      sum += this[_itens][i].total()
     }
     return sum
   }

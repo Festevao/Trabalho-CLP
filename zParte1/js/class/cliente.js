@@ -29,7 +29,7 @@ class Cliente extends Pessoa {
   }
 
   set dataNascimento(value) {
-    if (!(dataNacimento instanceof Date)) return
+    if (!(value instanceof Date)) return
     this[_dataNascimento] = value
   }
 }

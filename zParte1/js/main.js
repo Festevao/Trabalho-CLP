@@ -26,12 +26,37 @@ function clearContainer() {
   }
 }
 
-function viewOrDeleteItem() {
-
+function deleteItem(event) {
+  const saleIndex = event.target.myParam
+  const clickSelector = event.target
+  const idText = clickSelector.getAttribute("id")
+  if (idText !== "" && idText !== null) { //confere se o click aconteceu em um botao
+    const venda = arrayVendas[saleIndex]
+    const auxArray = idText.split('_')
+    const clickOption = auxArray[0]
+    const itemIndex = Number(auxArray[1])
+    if (clickOption === "delet") { //se foi o botao de delet
+      if (confirm(`Voce esta prestes a exluir o Item: ${arrayVendas[saleIndex].itens[itemIndex].produto.nome} na quantidade: ${arrayVendas[saleIndex].itens[itemIndex].quantidade}`)) {
+        arrayVendas[saleIndex].itens.splice(itemIndex, 1)
+        loadIndividualSaleMenu(saleIndex)
+      }
+    }
+  }
 }
 
-function addItem() {
-
+function addItem(event) {
+  const saleIndex = event.currentTarget.myParam
+  const venda = arrayVendas[saleIndex]
+  //captura as informacoes fornecidas pelo usuario
+  const count = document.querySelector('#inputCount').value
+  const productIndex = document.querySelector('#selectProduct').value
+  if (count === null || count == "" || productIndex === "") { //se algum input crucial esta vazio
+    alert("Preencha corretamente os dados da venda")
+    return
+  }
+  // console.log(`quantidade: ${count}\nproduto: ${arrayProdutos[productIndex].nome}`)
+  venda.addItens(new ItemVenda(arrayProdutos[Number(productIndex)], Number(count)))
+  loadIndividualSaleMenu(saleIndex)
 }
 
 
@@ -42,15 +67,19 @@ function loadIndividualSaleMenu(saleIndex) {
   const containerSelector = document.querySelector('.container')
   //display de informacoes de ItemVenda
   const itensDisplay = document.createElement('div')
-  //titulo do menu
+  //titulo do menu, subtitulo de informacoes da venda e ultimo titulo com o total da venda
   const itemLabel = document.createElement('h1')
   itemLabel.innerHTML = 'ITENS DA VENDA'
   const itemSubLabel = document.createElement('h3')
   itemSubLabel.innerHTML = `${venda.numero}, ${venda.cliente.nome}, ${venda.data.toLocaleDateString('pt-BR', dateOptions)}`
   itemSubLabel.style.color = 'blue'
+  const itemTotalLabel = document.createElement('h3')
+  itemTotalLabel.innerHTML = `Total: ${venda.total()}`
+  itemTotalLabel.style.color = 'green'
   //botoes de adicionar item e voltar ao menu anterior
   const itemAddButton = document.createElement('button')
   itemAddButton.innerHTML = 'Adicionar item'
+  itemAddButton.myParam = saleIndex
   const backButton = document.createElement('button')
   backButton.innerHTML = 'Voltar'
   const buttonsContent = document.createElement('div')
@@ -67,7 +96,7 @@ function loadIndividualSaleMenu(saleIndex) {
   countInput.setAttribute("onchange", "this.value = parseInt(this.value);")
 
   const productSelect = document.createElement('select')
-  productSelect.setAttribute("id", "selectClient")
+  productSelect.setAttribute("id", "selectProduct")
 
   const optionLabel = document.createElement('option')
   optionLabel.setAttribute("value", "")
@@ -87,23 +116,47 @@ function loadIndividualSaleMenu(saleIndex) {
   formItemAdd.appendChild(countInput)
   formItemAdd.appendChild(productSelect)
 
+  //preenchendo as informacoes do display de itens com as itens da venda ja cadastradas
+  for (let i = 0; i < venda.itens.length; i++) {
+    const itemLine = document.createElement('div')
 
+    const itemCount = document.createElement('span')
+    itemCount.innerHTML = venda.itens[i].quantidade
 
+    const itemName = document.createElement('span')
+    itemName.innerHTML = venda.itens[i].produto.nome
 
+    const itensTotal = document.createElement('span')
+    itensTotal.innerHTML = `Total: ${venda.itens[i].total()}`
 
+    //botoes de visualizar e deletar venda
+    const deletButton = document.createElement('button')
+    deletButton.setAttribute("id", "delet_" + i)
+    deletButton.innerHTML = "Deletar"
+    deletButton.style.backgroundColor = "red"
+    deletButton.myParam = saleIndex
+
+    itemLine.appendChild(itemCount)
+    itemLine.appendChild(itemName)
+    itemLine.appendChild(itensTotal)
+    itemLine.appendChild(deletButton)
+    itemLine.appendChild(createLine())
+    itensDisplay.appendChild(itemLine)
+  }
 
   //organizando elementos criados no container principal
   containerSelector.appendChild(itemLabel)
   containerSelector.appendChild(itemSubLabel)
+  containerSelector.appendChild(itemTotalLabel)
   containerSelector.appendChild(formItemAdd)
   containerSelector.appendChild(buttonsContent)
   containerSelector.appendChild(createLine())
   containerSelector.appendChild(itensDisplay)
 
   //definindo comportamento dos botoes
-  itemAddButton.addEventListener('click', addItem)
+  itemAddButton.addEventListener('click', addItem, false)
   backButton.addEventListener('click', loadSalesMenu)
-  itensDisplay.addEventListener('click', viewOrDeleteItem)
+  itensDisplay.addEventListener('click', deleteItem, false)
 }
 
 //funcao que dispara apos clicar em um botao no menu de vendas
@@ -137,7 +190,7 @@ function addSale() {
     const auxDate = new Date()
     data = auxDate.getFullYear() + '-' + (auxDate.getMonth() + 1) + '-' + (auxDate.getDate() - 1)//define a data com dia e hora atuais no formato AAAA-MM-DD
   }
-  console.log(`numero: ${numero}\ndata: ${data}\nclientIndex: ${clientIndex}`)
+  // console.log(`numero: ${numero}\ndata: ${data}\nclientIndex: ${clientIndex}`)
   let dataRefac = new Date(data)
   dataRefac.setDate(dataRefac.getDate() + 1)
   arrayVendas.push(new Venda(numero, dataRefac, arrayClientes[clientIndex]))
@@ -284,7 +337,7 @@ function addProduct() {
     alert("Preencha as informacoes do produto corretamente")
     return
   }
-  console.log(`codigo: ${productCode}\nnome: ${productName}\nvalor: ${productValue}`)
+  // console.log(`codigo: ${productCode}\nnome: ${productName}\nvalor: ${productValue}`)
   arrayProdutos.push(new Produto(Number(productCode), productName, Number(productValue)))
   loadProductsMenu()
 }
@@ -399,7 +452,7 @@ function alterOrDeleteClient(event) {
           alert("O formato de data esta errado (DD/MM/AAAA)")
           return
         }
-        (arrayClientes[clientIndex])[clientAtribute] = arrayAux[0] + '-' + arrayAux[1] + '-' + arrayAux[2] //altera o forma da data para MM/DD/AAAA
+        (arrayClientes[clientIndex])[clientAtribute] = new Date(arrayAux[2] + '-' + arrayAux[1] + '-' + Number(arrayAux[0])) //altera o forma da data para AAAA/MM/DD
       }
     }
     loadClientsMenu()
@@ -417,7 +470,7 @@ function addClient() {
     alert("Preencha todos os campos para cadastrar um cliente")
     return
   }
-  console.log(`nome: ${clientName}\nendereco: ${clientAdress}\nRG: ${clientRg}\nnascimento ${clientBDate}`)
+  // console.log(`nome: ${clientName}\nendereco: ${clientAdress}\nRG: ${clientRg}\nnascimento ${clientBDate}`)
   let dataRefac = new Date(clientBDate)
   dataRefac.setDate(dataRefac.getDate() + 1)
   arrayClientes.push(new Cliente(clientName, clientAdress, clientRg, dataRefac))
@@ -539,16 +592,23 @@ function loadMainMenu() {
   salesButton.addEventListener('click', loadSalesMenu)
 }
 
-arrayClientes.push(new Cliente("Felipi", "Av Leite de castro, 1679", "MG20.187.308", new Date("1999-02-04")))
-arrayClientes.push(new Cliente("Pedro", "Lagoa Dourada", "M17.145.457", new Date("1997-09-30")))
-arrayClientes.push(new Cliente("Marcus", "Sampa", "SP14.784.425", new Date("1996-05-21")))
+arrayClientes.push(new Cliente("Felipi", "Av Leite de castro, 1679", "MG20.187.308", new Date("1999-02-05")))
+arrayClientes.push(new Cliente("Pedro", "Lagoa Dourada", "M17.145.457", new Date("1997-09-31")))
+arrayClientes.push(new Cliente("Marcus", "Sampa", "SP14.784.425", new Date("1996-05-22")))
 
-arrayProdutos.push(new Produto(1, "Bola", 25.50))
-arrayProdutos.push(new Produto(2, "Tenis", 50.75))
-arrayProdutos.push(new Produto(3, "Paiernho", 1.25))
+const bolaObj = new Produto(1, "Bola", 25.50)
+const tenisObj = new Produto(2, "Tenis", 50.75)
+const paierinhoObj = new Produto(3, "Paierinho", 1.25)
+arrayProdutos.push(bolaObj)
+arrayProdutos.push(tenisObj)
+arrayProdutos.push(paierinhoObj)
 
 arrayVendas.push(new Venda(1, new Date("2021-10-05"), arrayClientes[0]))
 arrayVendas.push(new Venda(2, new Date(), arrayClientes[2]))
 arrayVendas.push(new Venda(3, new Date(), arrayClientes[0]))
+
+arrayVendas[0].addItens(new ItemVenda(bolaObj, 5), new ItemVenda(paierinhoObj, 3), new ItemVenda(tenisObj, 2))
+arrayVendas[1].addItens(new ItemVenda(bolaObj, 2), new ItemVenda(tenisObj, 4))
+arrayVendas[2].addItens(new ItemVenda(tenisObj, 3))
 
 loadMainMenu()
