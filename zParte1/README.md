@@ -47,4 +47,5 @@ $ npm run make
 #linux & windows
 $ npm start
 ```
+### Observação final.
 Se o navegador não abrir automaticamente, olhe o terminal novamente e veja em qual ip/porta o sistema esta roadando e digite essa informação em sua barra de pesquisa do navegador (geralmnete a url é http://127.0.0.1:8080/)
