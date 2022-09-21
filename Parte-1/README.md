@@ -8,21 +8,29 @@
 Mais informações em https://nodejs.org/en/.
 ### Abrir o terminal na pasta raiz do projeto.
 ```bash
-#linux & windows
+# linux & windows
 $ cd <caminho da pasta raiz>
 ```
 ### Instalar a feramenta "live-server".
 É necessária para rodar o sistema pois os navegadores nao costumam permitir a importacao de modulos quando o protocolo utilizado é "FILE" e nao "HTTP" ou "HTTPS".
 ```bash
-#linux
+# linux
 $ sudo npm run make
 
-#windows
+# windows
 $ npm run make
+```
+ou se preferir :
+```bash
+# linux
+$ sudo npm install -g live-server
+
+# windows
+$ npm install -g live-server
 ```
 ### Iniciar o servidor web para exibição do sistema em seu navegador.
 ```bash
-#linux & windows
+# linux & windows
 $ npm start
 ```
 ### Observação:
