@@ -438,7 +438,9 @@ function alterOrDeleteClient(event) {
     const clientIndex = Number(auxArray[1])
     if (clientAtribute === "delet") { //se foi o botao de delet
       if (confirm(`Voce esta prestes a exluir o cliente ${arrayClientes[clientIndex].nome}`)) arrayClientes.splice(clientIndex, 1)
-      return
+      else {
+        return
+      }
     } else { //se foi algum outro botao
       const newPropertyValue = prompt(`Qual sera o novo valor de ${clientAtribute} ?`)
       if (newPropertyValue === null) { //se o valor digitado esta vazio
