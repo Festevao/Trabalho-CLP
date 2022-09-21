@@ -17,28 +17,28 @@ A interface foi feita com 1 arquivo html que contem a base para todos os element
 
 | Funcionalidades para clientes        | Status |
 | ------------------------------------ | ------ |
+| ⏺️ Vizualizar informações de clientes | ✅      |
 | 🆕 Inserir clientes                   | ✅      |
 | 🔁 Alterar informações de clientes    | ✅      |
-| ⏺️ Vizualizar informações de clientes | ✅      |
 | ❌ Apagar clientes                    | ✅      |
 
 | Funcionalidades para podutos         | Status |
 | ------------------------------------ | ------ |
+| ⏺️ Vizualizar informações de Produtos | ✅      |
 | 🆕 Inserir Produtos                   | ✅      |
 | 🔁 Alterar informações de Produtos    | ✅      |
-| ⏺️ Vizualizar informações de Produtos | ✅      |
 | ❌ Apagar Produtos                    | ✅      |
 
 | Funcionalidades para vendas        | Status |
 | ---------------------------------- | ------ |
-| 🆕 Inserir Vendas                   | ✅      |
 | ⏺️ Vizualizar informações de Vendas | ✅      |
+| 🆕 Inserir Vendas                   | ✅      |
 | ❌ Apagar Vendas                    | ✅      |
 
 | Funcionalidades para produtos em vendas (ItemVenda)       | Status |
 | --------------------------------------------------------- | ------ |
-| 🆕 Inserir produto em vendas (ItemVenda)                   | ✅      |
 | ⏺️ Vizualizar informações de produto em vendas (ItemVenda) | ✅      |
+| 🆕 Inserir produto em vendas (ItemVenda)                   | ✅      |
 | ❌ Apagar produto em vendas (ItemVenda)                    | ✅      |
   
 ## Como executar o programa:
