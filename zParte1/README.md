@@ -1,5 +1,5 @@
 <h1 align="center">Trabalho-CLP Parte-1</h1>
-<p align="center">Sistema de controle de produtos, cliente e vendas criado para explorar a linguagem javascript e os conceitos de POO</p>
+<p align="center">Sistema de controle de produtos, cliente e vendas criado para explorar a linguagem javascript e os conceitos de POO.</p>
 
 ## Sobre o programa:
 É um sistema de dominio web, feito com a inteção de observar visualmente o funcionamento da linguagem javascipt na orientação a objetos.
