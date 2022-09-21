@@ -6,24 +6,40 @@
 A interface foi feita com 1 arquivo html que contem a base para todos os elementos visuais do programa (apenas uma div no body), 1 arquivo css que estiliza os elementos da interface e 1 arquivo javascript que controla todo o comportamento da interface (de maneira iterativa) e o controle das estruturas e objetos criados (usando o paradigma de POO).</br>
 
 * É indicado que seja utilizado o navegador google chrome para execução desse programa.
-## Supported features:
+## Classes implementadas:
+* <a href="">Pessoa</a> (abstrata)
+* <a href="">Cliente</a> (extends Pessoa)
+* <a href="">Produto</a>
+* <a href="">Totalizavel</a> (abstrata)
+* <a href="">Venda</a> (Extends Totalizavel)
+* <a href="">ItemVenda</a> (Extends Totalizavel)
+## Funcionalidade por classe:
 
-| Feature                                                 | Status |
-| ------------------------------------------------------- | ------ |
-| Inserir clientes                                        | ✅      |
-| Alterar informações de clientes                         | ✅      |
-| Vizualizar informações de clientes                      | ✅      |
-| Apagar clientes                                         | ✅      |
-| Inserir Produtos                                        | ✅      |
-| Alterar informações de Produtos                         | ✅      |
-| Vizualizar informações de Produtos                      | ✅      |
-| Apagar Produtos                                         | ✅      |
-| Inserir Vendas                                          | ✅      |
-| Vizualizar informações de Vendas                        | ✅      |
-| Apagar Vendas                                           | ✅      |
-| Inserir produto em vendas (ItemVEnda)                   | ✅      |
-| Vizualizar informações de produto em vendas (ItemVEnda) | ✅      |
-| Apagar produto em vendas (ItemVEnda)                    | ✅      |
+| Funcionalidades para clientes        | Status |
+| ------------------------------------ | ------ |
+| 🆕 Inserir clientes                   | ✅      |
+| 🔁 Alterar informações de clientes    | ✅      |
+| ⏺️ Vizualizar informações de clientes | ✅      |
+| ❌ Apagar clientes                    | ✅      |
+
+| Funcionalidades para podutos         | Status |
+| ------------------------------------ | ------ |
+| 🆕 Inserir Produtos                   | ✅      |
+| 🔁 Alterar informações de Produtos    | ✅      |
+| ⏺️ Vizualizar informações de Produtos | ✅      |
+| ❌ Apagar Produtos                    | ✅      |
+
+| Funcionalidades para vendas        | Status |
+| ---------------------------------- | ------ |
+| 🆕 Inserir Vendas                   | ✅      |
+| ⏺️ Vizualizar informações de Vendas | ✅      |
+| ❌ Apagar Vendas                    | ✅      |
+
+| Funcionalidades para produtos em vendas (ItemVenda)       | Status |
+| --------------------------------------------------------- | ------ |
+| 🆕 Inserir produto em vendas (ItemVenda)                   | ✅      |
+| ⏺️ Vizualizar informações de produto em vendas (ItemVenda) | ✅      |
+| ❌ Apagar produto em vendas (ItemVenda)                    | ✅      |
   
 ## Como executar o programa:
 ### Instalar o NPM (que geralmente ja é instalado qunado se instala o nodeJs).
