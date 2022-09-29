@@ -1,5 +1,5 @@
 function fibonacci (index=10) {
-  if (!index) index = 10
+  if (!index && index !== 0) index = 10
   let sequence = [0, 1]
   for (let i = 2; i <= index; i++) {
     let n = sequence.length - 1 //last index of sequence
@@ -19,8 +19,8 @@ function getExecutionTime(method) { //calc a function execution time
 
 function init () {
   let arg = parseInt(process.argv[2])
-  if (process.argv[2] && !arg) {
-    throw new TypeError("O numero passado como argumento deve ser um inteiro.")
+  if (process.argv[2] && arg !== 0 && !arg) {
+  throw new TypeError(`O numero passado como argumento deve ser um inteiro.\nValor passado: ${process.argv[2]}\nTentativa de conversao: ${arg}`)
   }
   console.log(`Tempo de execucao do fibonacci: ${getExecutionTime(fibonacci, arg)}ms`)
 }
